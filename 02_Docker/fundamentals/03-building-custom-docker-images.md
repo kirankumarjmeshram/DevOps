@@ -27,6 +27,39 @@ Dockerfile  ── docker build ──>  Docker Image  ── docker run ──>
 ## 📝 Basic Dockerfile Syntax
 
 A Dockerfile typically contains instructions in the following format:
+=====================================================================
+
+# 03. Building Custom Docker Images
+
+## What Is a Dockerfile?
+
+A Dockerfile is a text file containing instructions used to build a Docker image.
+
+A Docker image packages the items an application needs to run, such as application code, runtime, libraries, dependencies, and configuration.
+
+For example, instead of manually installing Java, copying a Spring Boot JAR, and configuring the runtime on every server, these steps can be defined in a Dockerfile and used to build a reusable image.
+
+## Dockerfile-to-Container Workflow
+
+```text
+Dockerfile  --docker build-->  Docker Image  --docker run-->  Docker Container
+```
+
+- **Dockerfile:** Defines how the image should be built.
+- **Docker Image:** The built template containing the application and its requirements.
+- **Docker Container:** A runnable instance created from the image.
+
+## Basic Dockerfile Syntax
+
+A Dockerfile instruction generally follows this format:
+
+>>>>>>> 4b713e3b1af9e5675511eaa2bedf70c9cb99d24a
+>>>>>>>
+>>>>>>
+>>>>>
+>>>>
+>>>
+>>
 
 ```dockerfile
 INSTRUCTION argument
@@ -40,6 +73,7 @@ COPY index.html /usr/share/nginx/html/index.html
 EXPOSE 80
 ```
 
+<<<<<<< HEAD
 Explanation:
 
 - `FROM` selects the base image.
@@ -55,6 +89,27 @@ The **build context** is the set of files and directories Docker can access duri
 When you run `docker build`, the final argument specifies the build context.
 
 Example project structure:
+==========================
+
+- `FROM` selects the base image.
+- `COPY` copies a file into the image.
+- `EXPOSE` documents the port on which the application is expected to listen.
+
+Docker processes build instructions in order, subject to its build and caching rules.
+
+## Build Context
+
+The build context is the set of files Docker can access for instructions such as `COPY` and `ADD`. When running `docker build`, the final `.` commonly means the current directory is the build context.
+
+Example project:
+
+>>>>>>> 4b713e3b1af9e5675511eaa2bedf70c9cb99d24a
+>>>>>>>
+>>>>>>
+>>>>>
+>>>>
+>>>
+>>
 
 ```text
 project/
@@ -70,12 +125,25 @@ WORKDIR /app
 COPY app.txt /app/app.txt
 ```
 
+<<<<<<< HEAD
 Build the image:
+================
+
+Build the image from the project directory:
+
+>>>>>>> 4b713e3b1af9e5675511eaa2bedf70c9cb99d24a
+>>>>>>>
+>>>>>>
+>>>>>
+>>>>
+>>>
+>>
 
 ```bash
 docker build -t my-app:1.0 .
 ```
 
+<<<<<<< HEAD
 Here:
 
 - `-t my-app:1.0` assigns a name and tag to the image.
@@ -85,10 +153,24 @@ The `app.txt` file is copied from the build context into `/app/app.txt` inside t
 
 ### Using COPY .
 
+=======
+The `app.txt` file is copied from the build context into `/app/app.txt` in the image.
+
+### Using COPY . .
+
+>>>>>>> 4b713e3b1af9e5675511eaa2bedf70c9cb99d24a
+>>>>>>>
+>>>>>>
+>>>>>
+>>>>
+>>>
+>>
+
 ```dockerfile
 COPY . .
 ```
 
+<<<<<<< HEAD
 This copies the contents of the build context into the current working directory inside the image.
 
 Use a `.dockerignore` file to exclude unwanted files, such as local dependencies, Git metadata, and environment files, from the build context.
@@ -259,3 +341,45 @@ Write Dockerfile → Build Image → Run Container → Test Application
 - [Docker Docs — Dockerfile reference](https://docs.docker.com/reference/dockerfile/)
 - [Docker Docs — Build context](https://docs.docker.com/build/concepts/context/)
 - [Docker Docs — Build an image](https://docs.docker.com/get-started/docker-concepts/building-images/build-tag-and-publish-an-image/)
+  =======
+  This copies the contents of the build context into the current working directory inside the image. Use a `.dockerignore` file to exclude files that should not be sent as part of the build context or copied into the image.
+
+## Basic Image-Building Commands
+
+```bash
+# Build an image from the Dockerfile in the current directory
+docker build -t my-app:1.0 .
+
+# List local images
+docker images
+
+# Create and start a container from the image
+docker run --name my-app-container my-app:1.0
+
+# List containers
+docker ps -a
+```
+
+## Key Points
+
+- A Dockerfile is the recipe; the image is the result of building that recipe.
+- A container is created from an image.
+- The build context determines which local files can be used by `COPY` and `ADD`.
+- The `-t` option gives the image a name and optionally a tag.
+- The final `.` in `docker build -t my-app:1.0 .` specifies the current directory as the build context.
+
+## Hands-on Practice
+
+1. Create a directory named `custom-image-demo`.
+2. Create an `index.html` file containing a simple message.
+3. Create a Dockerfile using `nginx:alpine` as the base image and copy the HTML file to `/usr/share/nginx/html/index.html`.
+4. Build the image with a name and tag.
+5. Run a container from the image and verify the page in a browser.
+
+## Interview Questions
+
+1. What is a Dockerfile?
+2. What is the difference between a Dockerfile, an image, and a container?
+3. What does the final `.` mean in `docker build -t my-app:1.0 .`?
+4. What is the build context?
+5. Why should a `.dockerignore` file be used?
