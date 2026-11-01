@@ -53,14 +53,6 @@ Dockerfile  --docker build-->  Docker Image  --docker run-->  Docker Container
 
 A Dockerfile instruction generally follows this format:
 
->>>>>>> 4b713e3b1af9e5675511eaa2bedf70c9cb99d24a
->>>>>>>
->>>>>>
->>>>>
->>>>
->>>
->>
-
 ```dockerfile
 INSTRUCTION argument
 ```
@@ -73,7 +65,6 @@ COPY index.html /usr/share/nginx/html/index.html
 EXPOSE 80
 ```
 
-<<<<<<< HEAD
 Explanation:
 
 - `FROM` selects the base image.
