@@ -60,3 +60,66 @@ here
 ``instance_type`` define EC2 compute capacity
 ``t3.medium`` 2 vCPUs and 4GiB RAM
 ``tag``assign metadata to AWS resources for idntification and management
+
+
+## 3. Kubernates - Create a ReplicaSet with 3 Replicas
+
+
+```YAML
+apiVersiob: apps/v1
+kind: ReplicaSet
+metadata: 
+	name: pathnex-replicaset
+spec:
+    replicas: 3
+    selector:
+        matchLabels:
+            app: pathnex-app
+
+    template:
+      	metadata:
+          	labels:
+               	app: pathnex-app
+		spec:
+        	containers:
+            	- name: app
+                  image: nginx
+                  ports:
+                  	-containerPort: 80
+
+                  
+            
+```
+
+
+
+#### 4. Shell Script
+
+```Shell
+#! /bin/bash
+echo "Current User: $(whoami)"
+echo "Current user group: $(groups)"
+```
+
+
+
+## 5. Docker - Build Nginx web Server
+
+
+
+project structure:
+
+Dockerfile and index.html contains in repo
+
+index.html
+
+```HTML
+<h1> Hello Pathnex</h1>
+```
+
+Dockerfile
+
+```YAML
+FROM nginx:latest
+Copy index.html /usr/share/nginx/index.html
+```
