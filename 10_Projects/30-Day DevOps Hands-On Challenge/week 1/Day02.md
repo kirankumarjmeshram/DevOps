@@ -174,7 +174,7 @@ Check the Pods:
 df -h
 ```
 
-``df`` : disk file system  
+``df`` : disk file system
 ``h`` : human readable
 
 #### Run script
@@ -183,7 +183,6 @@ create file ``nano disk-usage.sh``
 add the script above and save and then exit
 make it executable ``chmod +x disk-usage.sh``
 execute ``./disk-usages.sh`` or ``bash disk-usage.sh``
-
 
 ## 5. Docker & Container
 

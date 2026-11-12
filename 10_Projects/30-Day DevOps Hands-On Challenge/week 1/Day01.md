@@ -1,4 +1,3 @@
-
 ```YAML
 - name: Install Nginx on Pathnex server
   host: all
@@ -11,7 +10,6 @@
         state: present
 ```
 
-
 Docker
 
 ```Shell
@@ -20,7 +18,7 @@ docker --version
 docker run ubuntu echo "Hello Pathnex"
 ```
 
-Docker 
+Docker
 
 ```Shell
 FROM ubuntu:22.04

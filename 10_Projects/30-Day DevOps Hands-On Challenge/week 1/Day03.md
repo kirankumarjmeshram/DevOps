@@ -30,10 +30,7 @@ here
 ``state: started`` starts apache immediately
 ``enabled: yes`` starts apache automatically after system reboots
 
-
 ## 2. Terraform - EC2 Instance (t3.medium)
-
-
 
 ```YAML
 provider "aws" {
@@ -61,9 +58,7 @@ here
 ``t3.medium`` 2 vCPUs and 4GiB RAM
 ``tag``assign metadata to AWS resources for idntification and management
 
-
 ## 3. Kubernates - Create a ReplicaSet with 3 Replicas
-
 
 ```YAML
 apiVersiob: apps/v1
@@ -86,12 +81,7 @@ spec:
                   image: nginx
                   ports:
                   	-containerPort: 80
-
-                  
-            
 ```
-
-
 
 #### 4. Shell Script
 
@@ -101,11 +91,7 @@ echo "Current User: $(whoami)"
 echo "Current user group: $(groups)"
 ```
 
-
-
 ## 5. Docker - Build Nginx web Server
-
-
 
 project structure:
 
